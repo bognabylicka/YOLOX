@@ -43,10 +43,10 @@ class Exp(BaseExp):
         self.enable_mixup = True
 
         # --------------  training config --------------------- #
-        self.warmup_epochs = 5
-        self.max_epoch = 300
+        self.warmup_epochs = 2
+        self.max_epoch = 80
         self.warmup_lr = 0
-        self.basic_lr_per_img = 0.01 / 64.0
+        self.basic_lr_per_img = 0.01 / 8.0
         self.scheduler = "yoloxwarmcos"
         self.no_aug_epochs = 15
         self.min_lr_ratio = 0.05
