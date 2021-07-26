@@ -27,6 +27,8 @@ class Exp(BaseExp):
         self.data_num_workers = 1
         self.input_size = (640, 640)
         self.random_size = (14, 26)
+        self.name_train = "train"
+        self.name_val = "val"
         self.train_ann = "instances_train.json"
         self.val_ann = "instances_val.json"
 
