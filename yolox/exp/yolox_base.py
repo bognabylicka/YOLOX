@@ -27,8 +27,9 @@ class Exp(BaseExp):
         self.data_num_workers = 1
         self.input_size = (640, 640)
         self.random_size = (14, 26)
-        self.name_train = "train"
-        self.name_val = "val"
+        self.data_dir = "/media/cluster_fs/datasets/object_detection/pcd-coco"
+        self.name_train = "image/train"
+        self.name_val = "images/val"
         self.train_ann = "instances_train.json"
         self.val_ann = "instances_val.json"
 
@@ -92,7 +93,7 @@ class Exp(BaseExp):
         )
 
         dataset = COCODataset(
-            data_dir=None,
+            data_dir=self.data_dir,
             json_file=self.train_ann,
             name=self.name_train,
             img_size=self.input_size,
@@ -208,7 +209,7 @@ class Exp(BaseExp):
         from yolox.data import COCODataset, ValTransform
 
         valdataset = COCODataset(
-            data_dir=None,
+            data_dir=self.data_dir,
             json_file=self.val_ann,  # if not testdev else "image_info_test-dev2017.json",
             name=self.name_val,  #"val2017" if not testdev else "test2017",
             img_size=self.test_size,
