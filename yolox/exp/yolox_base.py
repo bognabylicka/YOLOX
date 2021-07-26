@@ -27,7 +27,7 @@ class Exp(BaseExp):
         self.data_num_workers = 1
         self.input_size = (640, 640)
         self.random_size = (14, 26)
-        self.data_dir = "/media/cluster_fs/datasets/object_detection/pcd-coco"
+        self.data_dir = "/media/cluster_fs/datasets/object_detection/pcd-coco/"
         self.name_train = "image/train/"
         self.name_val = "images/val/"
         self.train_ann = "instances_train.json"
