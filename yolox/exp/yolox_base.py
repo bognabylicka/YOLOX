@@ -43,8 +43,8 @@ class Exp(BaseExp):
         self.enable_mixup = True
 
         # --------------  training config --------------------- #
-        self.warmup_epochs = 2
-        self.max_epoch = 80
+        self.warmup_iter = 500
+        self.max_iter=10000
         self.warmup_lr = 0
         self.basic_lr_per_img = 0.01 / 8.0
         self.scheduler = "yoloxwarmcos"
@@ -54,8 +54,8 @@ class Exp(BaseExp):
 
         self.weight_decay = 5e-4
         self.momentum = 0.9
-        self.print_interval = 10
-        self.eval_interval = 10
+        self.print_interval = 100
+        self.eval_interval = 100
         self.exp_name = os.path.split(os.path.realpath(__file__))[1].split(".")[0]
 
         # -----------------  testing config ------------------ #
