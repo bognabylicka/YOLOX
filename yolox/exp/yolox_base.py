@@ -18,17 +18,17 @@ class Exp(BaseExp):
         super().__init__()
 
         # ---------------- model config ---------------- #
-        self.num_classes = 80
+        self.num_classes = 2
         self.depth = 1.00
         self.width = 1.00
 
         # ---------------- dataloader config ---------------- #
         # set worker to 4 for shorter dataloader init time
-        self.data_num_workers = 4
+        self.data_num_workers = 1
         self.input_size = (640, 640)
         self.random_size = (14, 26)
-        self.train_ann = "instances_train2017.json"
-        self.val_ann = "instances_val2017.json"
+        self.train_ann = "instances_train.json"
+        self.val_ann = "instances_val.json"
 
         # --------------- transform config ----------------- #
         self.degrees = 10.0
@@ -92,6 +92,7 @@ class Exp(BaseExp):
         dataset = COCODataset(
             data_dir=None,
             json_file=self.train_ann,
+            name=self.name_train,
             img_size=self.input_size,
             preproc=TrainTransform(
                 rgb_means=(0.485, 0.456, 0.406),
@@ -206,8 +207,8 @@ class Exp(BaseExp):
 
         valdataset = COCODataset(
             data_dir=None,
-            json_file=self.val_ann if not testdev else "image_info_test-dev2017.json",
-            name="val2017" if not testdev else "test2017",
+            json_file=self.val_ann,  # if not testdev else "image_info_test-dev2017.json",
+            name=self.name_val,  #"val2017" if not testdev else "test2017",
             img_size=self.test_size,
             preproc=ValTransform(
                 rgb_means=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)
