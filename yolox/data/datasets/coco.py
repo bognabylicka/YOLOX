@@ -44,7 +44,6 @@ class COCODataset(Dataset):
         self.ids = self.coco.getImgIds()
         self.class_ids = sorted(self.coco.getCatIds())
         cats = self.coco.loadCats(self.coco.getCatIds())
-        print("Categories:", cats)
         self._classes = tuple([c["name"] for c in cats])
         self.name = name
         self.img_size = img_size
@@ -92,7 +91,6 @@ class COCODataset(Dataset):
         height = im_ann["height"]
 
         # load image and preprocess
-        print("Img_file:", self.data_dir + self.name + "{:012}".format(id_) + ".jpg" )
         img_file = os.path.join(
             self.data_dir, self.name, "{:012}".format(id_) + ".jpg"
         )
