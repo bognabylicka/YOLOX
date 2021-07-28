@@ -21,6 +21,7 @@ class Exp(BaseExp):
         self.num_classes = 2
         self.depth = 1.00
         self.width = 1.00
+        self.output_dir = "./YOLOX_outputs"
 
         # ---------------- dataloader config ---------------- #
         # set worker to 4 for shorter dataloader init time
