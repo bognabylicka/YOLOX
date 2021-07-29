@@ -31,8 +31,8 @@ class Exp(BaseExp):
         self.data_dir = "/media/cluster_fs/datasets/object_detection/pcd-coco/"
         self.name_train = "images/train/"
         self.name_val = "images/val/"
-        self.train_ann = "instances_train.json"
-        self.val_ann = "instances_val.json"
+        self.train_ann = "annotations/instances_train.json"
+        self.val_ann = "annotations/instances_val.json"
 
         # --------------- transform config ----------------- #
         self.degrees = 10.0
