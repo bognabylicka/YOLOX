@@ -273,7 +273,7 @@ def main():
             if args.train:
                 # setting env variable as workaround to make dist training work
                 #os.environ['MKL_SERVICE_FORCE_INTEL'] = '1'
-                train_command_line = f'python tools/train.py -n {args.model} -d {args.gpus} -b 8 -o {update_opts}'
+                train_command_line = f'python tools/train.py -n {args.model} -d {args.gpus} -b 8 -c snapshots/yolox_tiny.pth -o {update_opts}'
                 run(train_command_line, shell=True, check=True)
             if args.val:
                 for subset in ['train', 'val', 'test']:
