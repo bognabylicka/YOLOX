@@ -5,6 +5,7 @@ from datetime import datetime
 from subprocess import run
 
 EXPERIMENT_DIR = '/media/cluster_fs/user/bbylicka/experiments/object_detection'
+SNAPSHOTS_DIR = '/media/cluster_fs/user/bbylicka/experiments/snapshots'
 DATASETS_DIR = '/media/cluster_fs/datasets/object_detection/'
 
 # all datasets: 'aerial_tiled' 'bbcd' 'pothole' 'wildfire' 'vitens-tiled'
@@ -246,7 +247,9 @@ def parse_args():
     parser.add_argument('--model', help='Model name')
     # parser.add_argument('--config', help='Model config file')
     # parser.add_argument('--data-root', type=str)
+    parser.add_argument('--snapshot')
     parser.add_argument('--datasets', nargs='+', type=str, help='List of datasets to run experiments on')
+    parser.add_argument('--batch', type=int, default=8)
     parser.add_argument('--gpus', type=int, default=1)
     parser.add_argument('--train', action='store_true')
     parser.add_argument('--val', action='store_true')
@@ -269,11 +272,12 @@ def main():
                             f'name_train {dataset["train-data-root"]} ' \
                             f'val_ann {dataset["val-ann-file"]} ' \
                             f'name_val {dataset["val-data-root"]} ' \
+                            f'data_num_workers {args.gpus}'
 
             if args.train:
                 # setting env variable as workaround to make dist training work
                 #os.environ['MKL_SERVICE_FORCE_INTEL'] = '1'
-                train_command_line = f'python tools/train.py -n {args.model} -d {args.gpus} -b 8 -c snapshots/yolox_tiny.pth -o {update_opts}'
+                train_command_line = f'python tools/train.py -f {exp_dir}/{args.model} -d {args.gpus} -b {args.batch} -c {SNAPSHOTS_DIR}/{args.snapshot} -o {update_opts}'
                 run(train_command_line, shell=True, check=True)
             if args.val:
                 for subset in ['train', 'val', 'test']:
