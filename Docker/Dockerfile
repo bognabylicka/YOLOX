@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y sudo
 # Install YOLOX
 RUN git clone https://github.com/bognabylicka/YOLOX.git /yolox
 WORKDIR /yolox
+RUN checkout custom_coco
 RUN pip3 install -U pip && pip3 install -r requirements.txt
 RUN pip3 install -v -e .
 # Install apex
