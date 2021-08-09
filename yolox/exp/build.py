@@ -28,6 +28,7 @@ def get_exp_by_name(exp_name):
         "yolox-tiny": "yolox_tiny.py",
         "yolox-tiny-640": "yolox_tiny_640.py",
         "yolox-tiny-864": "yolox_tiny_864.py",
+        "tiny-640": "tiny_640.py",
         "yolox-nano": "nano.py",
         "yolox-nano-640": "nano_640.py",
         "yolox-nano-864": "nano_864.py",

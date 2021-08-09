@@ -281,8 +281,8 @@ def main():
                 run(train_command_line, shell=True, check=True)
             if args.val:
                 for subset in ['train', 'val', 'test']:
-                    eval_command_line = get_eval_command_line(subset, dataset, update_config,
-                                                          config_path, exp_data_dir)
+                    eval_command_line = get_eval_command_line(subset, dataset, update_opts,
+                                                              args.model, output_dir)
                     run(eval_command_line, shell=True, check=True)
 
     # print_summarized_statistics(DATASETS, args.model, exp_dir)
